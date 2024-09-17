@@ -34,11 +34,18 @@ main {
 }
 
 .book-list h2 {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.book-list h3 {
+    margin-top: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
 }
 
 .book-list ul {
     list-style-type: none;
+    padding-left: 0;
 }
 
 .book-list li {
