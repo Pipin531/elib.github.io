@@ -11,51 +11,62 @@
         <h1>Kumpulan Buku PDF</h1>
     </header>
     <main>
-        <section class="book-list">
-            <h2>Daftar Buku</h2>
-            
-            <h3>Buku Dongeng</h3>
-                        
-            <h3>Buku Pelajaran Kelas 7</h3>
-            <ul>
-                <li><a href="pdfs/pelajaran7_1.pdf" target="_blank">Pelajaran 7 - Buku 1</a></li>
-                <li><a href="pdfs/pelajaran7_2.pdf" target="_blank">Pelajaran 7 - Buku 2</a></li>
-            </ul>
-            
-            <h3>Buku Pelajaran Kelas 8</h3>
-            <ul>
-                <li><a href="pdfs/pelajaran8_1.pdf" target="_blank">Pelajaran 8 - Buku 1</a></li>
-                <li><a href="pdfs/pelajaran8_2.pdf" target="_blank">Pelajaran 8 - Buku 2</a></li>
-            </ul>
-            
-            <h3>Buku Pelajaran Kelas 9</h3>
-            <ul>
-                <li><a href="pdfs/pelajaran9_1.pdf" target="_blank">Pelajaran 9 - Buku 1</a></li>
-                <li><a href="pdfs/pelajaran9_2.pdf" target="_blank">Pelajaran 9 - Buku 2</a></li>
-            </ul>
-            
-            <h3>Buku Sajak</h3>
-            <ul>
-                <li><a href="pdfs/sajak1.pdf" target="_blank">Sajak 1</a></li>
-                <li><a href="pdfs/sajak2.pdf" target="_blank">Sajak 2</a></li>
-            </ul>
-            
-            <h3>Buku Novel</h3>
-            <ul>
-                <li><a href="pdfs/novel1.pdf" target="_blank">Novel 1</a></li>
-                <li><a href="pdfs/novel2.pdf" target="_blank">Novel 2</a></li>
-            </ul>
-
-            <ul>
-                <li><a href="pdfs/Daun-Daun Istimewa.pdf target="_blank">Daun-Daun Istimewa</a></li>
-                <li><a href="pdfs/Dongeng untuk Santi.pdf" target="_blank">Dongeng untuk Santi</a></li>
-                <li><a href="pdfs/Jangan Dekat-dekat.pdf" target="_blank">Jangan Dekat-dekat</a></li>
-            </ul>
-            
-        </section>
+        <div class="container">
+            <nav class="book-categories">
+                <button class="category-btn" onclick="showBooks('dongeng')">Buku Dongeng</button>
+                <button class="category-btn" onclick="showBooks('pelajaran7')">Buku Pelajaran Kelas 7</button>
+                <button class="category-btn" onclick="showBooks('pelajaran8')">Buku Pelajaran Kelas 8</button>
+                <button class="category-btn" onclick="showBooks('pelajaran9')">Buku Pelajaran Kelas 9</button>
+                <button class="category-btn" onclick="showBooks('sajak')">Buku Sajak</button>
+                <button class="category-btn" onclick="showBooks('novel')">Buku Novel</button>
+            </nav>
+            <section class="book-list" id="book-list">
+                <!-- Daftar buku akan ditampilkan di sini -->
+            </section>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Kumpulan Buku PDF. Semua hak cipta dilindungi.</p>
     </footer>
+
+    <script>
+        const books = {
+            dongeng: [
+                { title: 'Daun-Daun Istimewa', file: 'pdfs/Daun-Daun Istimewa.pdf' },
+                { title: 'Dongeng untuk Santi', file: 'pdfs/Dongeng untuk Santi.pdf' }
+            ],
+            pelajaran7: [
+                { title: 'Pelajaran 7 - Buku 1', file: 'pdfs/pelajaran7_1.pdf' },
+                { title: 'Pelajaran 7 - Buku 2', file: 'pdfs/pelajaran7_2.pdf' }
+            ],
+            pelajaran8: [
+                { title: 'Pelajaran 8 - Buku 1', file: 'pdfs/pelajaran8_1.pdf' },
+                { title: 'Pelajaran 8 - Buku 2', file: 'pdfs/pelajaran8_2.pdf' }
+            ],
+            pelajaran9: [
+                { title: 'Pelajaran 9 - Buku 1', file: 'pdfs/pelajaran9_1.pdf' },
+                { title: 'Pelajaran 9 - Buku 2', file: 'pdfs/pelajaran9_2.pdf' }
+            ],
+            sajak: [
+                { title: 'Sajak 1', file: 'pdfs/sajak1.pdf' },
+                { title: 'Sajak 2', file: 'pdfs/sajak2.pdf' }
+            ],
+            novel: [
+                { title: 'Novel 1', file: 'pdfs/novel1.pdf' },
+                { title: 'Novel 2', file: 'pdfs/novel2.pdf' }
+            ]
+        };
+
+        function showBooks(category) {
+            const bookList = document.getElementById('book-list');
+            bookList.innerHTML = ''; // Clear previous list
+            const categoryBooks = books[category] || [];
+            categoryBooks.forEach(book => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<a href="${book.file}" target="_blank">${book.title}</a>`;
+                bookList.appendChild(listItem);
+            });
+        }
+    </script>
 </body>
 </html>
